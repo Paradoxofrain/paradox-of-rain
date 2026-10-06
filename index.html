@@ -61,10 +61,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        .tagline .green {
-            color: #00ff88;
-            text-shadow: 0 0 8px #00ff8844;
-        }
         .nav-links {
             margin: 30px 0;
             text-align: center;
@@ -109,17 +105,42 @@
             font-weight: normal;
         }
         .manifesto p:last-child {
-            color: #7a9c8a;
+            color: #7a5555;
             font-style: italic;
+        }
+        .poem {
+            background-color: #0a0a0c;
+            border-left: 4px solid #540303;
+            padding: 25px 22px;
+            margin-bottom: 40px;
+            font-size: 15px;
+            color: #c8b8b0;
+            line-height: 1.8;
+        }
+        .poem h2 {
+            font-family: 'Impact', sans-serif;
+            color: #ff0000;
+            font-size: 19px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+        .poem p {
+            margin-bottom: 16px;
+        }
+        .poem p:last-child {
+            margin-bottom: 0;
         }
         .section { margin-bottom: 40px; }
         .section h2 {
             font-family: 'Impact', sans-serif;
-            color: #00ff88;
-            text-shadow: 0 0 10px #00ff8844;
+            color: #ff0000;
             font-size: 19px;
             margin-bottom: 20px;
-            border-bottom: 1px solid #0a3320;
+            border-bottom: 1px solid #222;
             padding-bottom: 8px;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -136,9 +157,8 @@
             transition: 0.2s;
         }
         .card:hover, .card:active {
-            border-left-color: #00ff88;
-            background-color: #051405;
-            box-shadow: -3px 0 15px #00ff8822;
+            border-left-color: #ff0000;
+            background-color: #140505;
         }
         .card-title {
             font-family: 'Impact', sans-serif;
@@ -149,31 +169,26 @@
             margin-bottom: 6px;
             text-transform: uppercase;
         }
-        .card:hover .card-title {
-            color: #00ff88;
-            text-shadow: 0 0 8px #00ff8844;
-        }
         .card-desc {
             color: #999;
             font-size: 14px;
             display: block;
         }
         .card-meta {
-            color: #4a7a5a;
+            color: #555;
             font-size: 12px;
             margin-top: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         .footer {
-            border-top: 1px solid #0a3320;
+            border-top: 1px solid #222;
             padding-top: 20px;
             font-size: 11px;
-            color: #00ff88;
+            color: #444;
             text-align: center;
             letter-spacing: 2px;
             margin-top: 50px;
-            text-shadow: 0 0 8px #00ff8844;
         }
     </style>
 </head>
@@ -185,7 +200,7 @@
 
         <div class="header">
             <h1>Парадокс дождя</h1>
-            <div class="tagline">Мультимузыкальный проект на стихи <span class="green">Юры Кузина</span></div>
+            <div class="tagline">Мультимузыкальный проект на стихи Юры Кузина</div>
         </div>
 
         <div class="nav-links">
@@ -198,6 +213,30 @@
             <h2>Манифест леса</h2>
             <p>Дело за делом и поделом, развязалась судьба морским узлом. До порога довели, да в порок. А дойдя до дома — закрыта дверь. Хоть скребись туда, хоть ногами бей. Узелок на палочке донесу и построю дом... В своём лесу.</p>
             <p style="margin-top: 12px;">Мы растим этот Лес рядом. Тихо. Для своих.</p>
+        </div>
+
+        <div class="poem">
+            <h2>Парадокс дождя</h2>
+            <p>В парадоксе дождя завершается осень,<br>
+            Парадоксом дождя начинается лето.<br>
+            Парадоксом задаются вопросы — не очень,<br>
+            Дождём оставляя их без ответа.</p>
+
+            <p>Ливня стеной — заставляет почувствовать,<br>
+            Как каплями мыслей слова вымывает.<br>
+            Моросью мелкой буду присутствовать<br>
+            В грунтовой воде, где меня закопают.</p>
+
+            <p>Жаром палящим в пустыне попить бы —<br>
+            Каплями пота, последними, утоляю жажду.<br>
+            Вот только статуей ледяной не застыть бы,<br>
+            В абсолютном нуле оказавшись однажды.</p>
+
+            <p>Парадоксом дождя поднимаюсь из лужи,<br>
+            Что брызгает смехом, когда наступаю.<br>
+            Слёз парадокс никому не нужен...<br>
+            А вы смейтесь.<br>
+            Я всё понимаю.</p>
         </div>
 
         <div class="section">
@@ -280,26 +319,23 @@
         window.addEventListener('resize', resize);
 
         const drops = [];
-        const colors = ['#4a9eff', '#00ff88']; // Синий и зелёный
-
-        for (let i = 0; i < 90; i++) {
+        for (let i = 0; i < 80; i++) {
             drops.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 len: Math.random() * 15 + 5,
                 speed: Math.random() * 2.5 + 1.5,
-                opacity: Math.random() * 0.4 + 0.1,
-                color: Math.random() < 0.65 ? colors[0] : colors[1] // 65% синие, 35% зелёные
+                opacity: Math.random() * 0.4 + 0.1
             });
         }
 
         function drawRain() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = '#4a9eff';
             ctx.lineWidth = 1;
 
             for (let i = 0; i < drops.length; i++) {
                 const d = drops[i];
-                ctx.strokeStyle = d.color;
                 ctx.globalAlpha = d.opacity;
                 ctx.beginPath();
                 ctx.moveTo(d.x, d.y);
