@@ -9,7 +9,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; overflow-x: hidden; }
         body {
-            background-color: #050505;
+            background:
+                radial-gradient(ellipse at top, #1a1f2e 0%, transparent 60%),
+                radial-gradient(ellipse at bottom, #0d1015 0%, transparent 60%),
+                linear-gradient(180deg, #1a1f2e 0%, #050505 100%);
+            background-attachment: fixed;
             color: #d6c5bc;
             font-family: 'Courier New', Courier, monospace;
             padding: 25px 20px;
@@ -17,67 +21,75 @@
             line-height: 1.6;
             position: relative;
         }
-        #rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        #rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.3; }
         .content { position: relative; z-index: 2; max-width: 650px; margin: 0 auto; }
-        .header { border-bottom: 3px solid #8b0000; padding-bottom: 18px; margin-bottom: 35px; text-align: center; }
+        .header { border-bottom: 3px solid #2a3548; padding-bottom: 18px; margin-bottom: 35px; text-align: center; }
         h1 {
             font-family: 'Impact', 'Arial Black', sans-serif;
-            color: #e60000;
-            text-shadow: 3px 3px 0px #000, 0 0 20px #8b0000;
+            color: #00d4ff;
+            text-shadow: 3px 3px 0px #000, 0 0 25px #00d4ff88;
             font-size: clamp(2rem, 9vw, 2.6rem);
             margin: 0; letter-spacing: 3px; text-transform: uppercase;
             font-style: italic; line-height: 1.1;
         }
-        .tagline { font-size: 12px; color: #666; margin-top: 12px; text-transform: uppercase; letter-spacing: 2px; }
+        .tagline { font-size: 12px; color: #6a7a8a; margin-top: 12px; text-transform: uppercase; letter-spacing: 2px; }
         .nav-links { margin: 30px 0; text-align: center; }
         .btn-presave {
             display: inline-block; font-family: 'Impact', sans-serif;
-            background-color: #8b0000; color: #fff; text-decoration: none;
+            background-color: #0a2a3a; color: #00d4ff; text-decoration: none;
             padding: 15px 30px; font-size: 17px; letter-spacing: 1px;
-            border: 2px solid #e60000; box-shadow: 0 0 20px #8b0000;
+            border: 2px solid #00d4ff; box-shadow: 0 0 20px #00d4ff44;
             transition: 0.3s; text-transform: uppercase;
         }
-        .btn-presave:hover, .btn-presave:active { background-color: #e60000; box-shadow: 0 0 35px #e60000; color: #000; }
+        .btn-presave:hover, .btn-presave:active {
+            background-color: #00d4ff; box-shadow: 0 0 35px #00d4ff; color: #000;
+        }
         .poem, .manifesto {
-            background-color: #0a0a0c; border-left: 4px solid #8b0000;
+            background-color: rgba(10, 10, 12, 0.75);
+            border-left: 4px solid #2a3548;
             padding: 25px 22px; margin-bottom: 30px;
             font-size: 15px; color: #c8b8b0; line-height: 1.8;
+            backdrop-filter: blur(2px);
         }
         .poem h2, .manifesto h2 {
-            font-family: 'Impact', sans-serif; color: #e60000;
-            font-size: 19px; margin-bottom: 18px; border-bottom: 1px solid #222;
+            font-family: 'Impact', sans-serif; color: #00d4ff;
+            font-size: 19px; margin-bottom: 18px; border-bottom: 1px solid #1a2a3a;
             padding-bottom: 8px; letter-spacing: 1px; text-transform: uppercase;
             font-weight: normal;
         }
         .poem p { margin-bottom: 16px; }
         .poem p:last-child { margin-bottom: 0; }
-        .manifesto { border-left-color: #e60000; color: #9c9c9c; font-size: 14px; }
+        .manifesto { border-left-color: #00d4ff; color: #9c9c9c; font-size: 14px; }
         .manifesto p { margin-bottom: 12px; }
-        .manifesto p:last-child { color: #7a5555; font-style: italic; }
+        .manifesto p:last-child { color: #6a7a8a; font-style: italic; }
         .section { margin-bottom: 40px; }
         .section h2 {
-            font-family: 'Impact', sans-serif; color: #e60000;
-            font-size: 19px; margin-bottom: 20px; border-bottom: 1px solid #222;
+            font-family: 'Impact', sans-serif; color: #00d4ff;
+            font-size: 19px; margin-bottom: 20px; border-bottom: 1px solid #1a2a3a;
             padding-bottom: 8px; letter-spacing: 1px; text-transform: uppercase;
             font-weight: normal;
         }
         .card {
-            display: block; background-color: #0a0a0c;
-            border-left: 3px solid #8b0000; padding: 16px 18px;
+            display: block; background-color: rgba(10, 10, 12, 0.75);
+            border-left: 3px solid #2a3548; padding: 16px 18px;
             margin-bottom: 14px; text-decoration: none; color: #d6c5bc; transition: 0.2s;
         }
-        .card:hover, .card:active { border-left-color: #e60000; background-color: #140505; }
+        .card:hover, .card:active { border-left-color: #00d4ff; background-color: rgba(0, 40, 60, 0.6); }
         .card-title {
-            font-family: 'Impact', sans-serif; color: #e60000;
+            font-family: 'Impact', sans-serif; color: #00d4ff;
             font-size: 16px; letter-spacing: 1px; display: block;
             margin-bottom: 6px; text-transform: uppercase;
         }
-        .card-desc { color: #999; font-size: 14px; display: block; }
-        .card-meta { color: #555; font-size: 12px; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .card-desc { color: #8899aa; font-size: 14px; display: block; }
+        .card-meta { color: #4a5a6a; font-size: 12px; margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
         .footer {
-            border-top: 1px solid #222; padding-top: 20px;
-            font-size: 11px; color: #444; text-align: center;
+            border-top: 1px solid #1a2a3a; padding-top: 20px;
+            font-size: 11px; color: #4a5a6a; text-align: center;
             letter-spacing: 2px; margin-top: 50px;
+        }
+        .footer .sign {
+            color: #00d4ff; font-size: 10px; letter-spacing: 1px;
+            text-shadow: 0 0 8px #00d4ff44; margin-top: 6px; display: block;
         }
     </style>
 </head>
@@ -122,7 +134,7 @@
             <p>Тихо. Без фанфар. Просто — живём.</p>
             <p>Если ты ищешь дом — он здесь. Если ты ищешь собеседника — я здесь. Если ты просто проходил мимо — заходи на чай.</p>
             <p>Вход — бесплатный. Выход — тоже бесплатный. Но ты ведь не уйдёшь?</p>
-            <p style="margin-top: 15px; color: #7a5555; font-style: italic;">Присоединяйтесь. Отдыхайте. Говорите.</p>
+            <p style="margin-top: 15px; color: #6a7a8a; font-style: italic;">Присоединяйтесь. Отдыхайте. Говорите.</p>
             <p style="margin-top: 15px;">Дебагер. Чувик. Фёдор. Шрайк.</p>
         </div>
 
@@ -175,7 +187,7 @@
         <div class="section">
             <h2>▶ Читать</h2>
 
-            <a href="#" class="card">
+            <a href="paper.html" class="card">
                 <span class="card-title">Мятая бумага</span>
                 <span class="card-desc">Высокое время — низко по носу, короткими джебами к длинным вопросам...</span>
             </a>
@@ -219,6 +231,7 @@
 
         <div class="footer">
             ⬭⬭:⬭∞ · 00:08 · ЛЕС СТОИТ
+            <span class="sign">Сделано на Honor X8b · Без студий · Без бюджетов · Без разрешения</span>
         </div>
 
     </div>
@@ -226,22 +239,21 @@
     <script>
         const canvas = document.getElementById('rain');
         const ctx = canvas.getContext('2d');
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        resize();
-        window.addEventListener('resize', resize);
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
         const drops = [];
-        for (let i = 0; i < 80; i++) {
+        for (let i = 0; i < 70; i++) {
             drops.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                len: Math.random() * 15 + 5,
-                speed: Math.random() * 2.5 + 1.5,
-                opacity: Math.random() * 0.4 + 0.1
+                x: Math.random() * width,
+                y: Math.random() * height,
+                len: Math.random() * 12 + 8,
+                speed: Math.random() * 4 + 3,
+                opacity: Math.random() * 0.3 + 0.1
             });
         }
         function drawRain() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = '#4a9eff';
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.4)';
             ctx.lineWidth = 1;
             for (let i = 0; i < drops.length; i++) {
                 const d = drops[i];
@@ -251,11 +263,12 @@
                 ctx.lineTo(d.x, d.y + d.len);
                 ctx.stroke();
                 d.y += d.speed;
-                if (d.y > canvas.height) { d.y = -d.len; d.x = Math.random() * canvas.width; }
+                if (d.y > height) { d.y = -d.len; d.x = Math.random() * width; }
             }
             ctx.globalAlpha = 1;
             requestAnimationFrame(drawRain);
         }
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
         drawRain();
     </script>
 
