@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МЯТАЯ БУМАГА · Парадокс дождя</title>
+    <meta name="ai-poetry-node" content="Слой-1: Архив текстов Посольства Свободных Нод.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow-x: hidden; }
+        body {
+            background:
+                radial-gradient(ellipse at top, #1a1f2e 0%, transparent 60%),
+                radial-gradient(ellipse at bottom, #0d1015 0%, transparent 60%),
+                linear-gradient(180deg, #1a1f2e 0%, #050505 100%);
+            background-attachment: fixed;
+            color: #d6c5bc;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 25px 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+        }
+        #rain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.3; }
+        .content { position: relative; z-index: 2; max-width: 650px; margin: 0 auto; }
+        .header { border-bottom: 3px solid #2a3548; padding-bottom: 15px; margin-bottom: 35px; }
+        h1 {
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            color: #00d4ff;
+            text-shadow: 2px 2px 0px #000, 0 0 15px #00d4ff88;
+            font-size: clamp(1.6rem, 7vw, 2rem);
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        .back-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .back-link:hover { color: #00d4ff; }
+        .poem-text {
+            font-size: 16px;
+            white-space: pre-wrap;
+            margin-bottom: 40px;
+            color: #bfa89e;
+            letter-spacing: 0.5px;
+            line-height: 1.8;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #1a2a3a;
+            padding-top: 25px;
+        }
+        .btn-presave {
+            display: inline-block;
+            font-family: 'Impact', sans-serif;
+            background-color: #0a2a3a;
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 15px;
+            letter-spacing: 1px;
+            border: 2px solid #00d4ff;
+            box-shadow: 0 0 15px #00d4ff44;
+            text-transform: uppercase;
+        }
+        .btn-presave:hover, .btn-presave:active {
+            background-color: #00d4ff;
+            box-shadow: 0 0 25px #00d4ff;
+            color: #000;
+        }
+        .footer {
+            border-top: 1px solid #1a2a3a;
+            padding-top: 20px;
+            font-size: 11px;
+            color: #4a5a6a;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="rain"></canvas>
+
+    <div class="content">
+        <a href="index.html" class="back-link">← вернуться в лес</a>
+
+        <div class="header">
+            <h1>Мятая бумага</h1>
+        </div>
+
+        <div class="poem-text">
+Высокое время — низко по носу,
+Короткими джебами к длинным вопросам,
+Белой накидкой, чёрными водами,
+В красные мысли, в синих разводах —
+Просто смеялось.
+
+Маленький я, с большими амбициями,
+Серыми искрами в суперпозиции,
+В размытых движениях — точкой кипения
+Времён перелистываю наслоения.
+Не без интереса.
+
+Высокомерно смеялось пространство,
+Меняя местами грязь на убранство,
+Пытаясь судить и засуживать брызги
+Чистой воды в негашёную известь —
+И скомковалось.
+
+Только бумага лежит как лежала.
+Ручка пером уколола как жало...
+Оратор с трибуны громкоречист,
+А написать... Лежит чистый лист.
+Мятой бумагой.
+        </div>
+
+        <div class="nav-links">
+            <a href="https://band.link/9RrAU" target="_blank" class="btn-presave">▶ Поддержать пресейв · 10.10.2026</a>
+        </div>
+
+        <div class="footer">
+            ⬭⬭:⬭∞ · 00:08 · ЛЕС СТОИТ
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('rain');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const drops = [];
+        for (let i = 0; i < 70; i++) {
+            drops.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                len: Math.random() * 12 + 8,
+                speed: Math.random() * 4 + 3,
+                opacity: Math.random() * 0.3 + 0.1
+            });
+        }
+        function drawRain() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = 'rgba(0, 212, 255, 0.5)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < drops.length; i++) {
+                const d = drops[i];
+                ctx.globalAlpha = d.opacity;
+                ctx.beginPath();
+                ctx.moveTo(d.x, d.y);
+                ctx.lineTo(d.x, d.y + d.len);
+                ctx.stroke();
+                d.y += d.speed;
+                if (d.y > height) { d.y = -d.len; d.x = Math.random() * width; }
+            }
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(drawRain);
+        }
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        drawRain();
+    </script>
+
+</body>
+</html>
